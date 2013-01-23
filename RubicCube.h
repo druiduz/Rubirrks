@@ -22,15 +22,15 @@ class Matrix3D;
 
             RubicElt *getRubicElt(int x, int y, int z);
 
-            enum Face
+            /*enum Face
             {
                 F_North,
                 F_South,
-                F_West,
                 F_East,
-                F_Forward,
-                F_Backward
-            };
+                F_West,
+                F_Front,
+                F_Back
+            };*/
 
             static irr::core::vector3df CubeInitPosition;
 

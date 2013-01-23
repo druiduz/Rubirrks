@@ -180,7 +180,7 @@ namespace rubic{
                         || i == 1 && j == 0 && k == 1
                         || i == 1 && j == 2 && k == 1
                         || i == 1 && j == 1 && k == 2){
-                        c = sceneManager->addAnimatedMeshSceneNode(blackCubeMesh, 0, 100+(i*j*k),
+                        c = sceneManager->addAnimatedMeshSceneNode(blackCubeMesh, 0, /*100+(i*j*k)*/100+(i+j*10+k*100),
                                                                         vector3df(RubicCube::CubeInitPosition.X+i*(RubicElt::cube_size+RubicElt::cube_margin),
                                                                             RubicCube::CubeInitPosition.Y+j*(RubicElt::cube_size+RubicElt::cube_margin),
                                                                             RubicCube::CubeInitPosition.Z+k*(RubicElt::cube_size+RubicElt::cube_margin)));
@@ -191,7 +191,7 @@ namespace rubic{
                         //c->setDebugDataVisible(irr::scene::EDS_FULL);
 
                     }else{
-                        c = sceneManager->addAnimatedMeshSceneNode(cube2CubeMesh, 0, 100+(i*j*k),
+                        c = sceneManager->addAnimatedMeshSceneNode(cube2CubeMesh, 0, /*100+(i*j*k)*/100+(i+j*10+k*100),
                                                                         vector3df(RubicCube::CubeInitPosition.X+i*(RubicElt::cube_size+RubicElt::cube_margin),
                                                                             RubicCube::CubeInitPosition.Y+j*(RubicElt::cube_size+RubicElt::cube_margin),
                                                                             RubicCube::CubeInitPosition.Z+k*(RubicElt::cube_size+RubicElt::cube_margin)));

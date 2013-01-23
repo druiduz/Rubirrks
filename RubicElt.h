@@ -25,20 +25,20 @@ namespace rubic {
             void refreshTriangleSelector(scene::ITriangleSelector *triangleSelector);
             int faceIsOnPoint(core::vector3df &point);
 
-            static int cube_size;
-            static int cube_margin;
+            static float cube_size;
+            static float cube_margin;
 
         protected:
             void initFaceTriangle();
 
             bool isCenter;
 
-            irr::core::triangle3df *u;
-            irr::core::triangle3df *d;
-            irr::core::triangle3df *n;
-            irr::core::triangle3df *s;
-            irr::core::triangle3df *e;
-            irr::core::triangle3df *w;
+            irr::core::triangle3df *n; //north
+            irr::core::triangle3df *s; //south
+            irr::core::triangle3df *b; //back
+            irr::core::triangle3df *f; //front
+            irr::core::triangle3df *e; //east
+            irr::core::triangle3df *w; //west
 
     };
 }

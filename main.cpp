@@ -169,16 +169,35 @@ int main(void){
 
 
         collRay = colisionManager->getRayFromScreenCoordinates(posCursor, sceneManager->getActiveCamera());
-        for(int i = 0; i < 3; i++){
-            //if(hasCollision) break;
-            for(int j = 0; j < 3; j++){
-                //if(hasCollision) break;
-                for(int k = 0; k < 3; k++){
-                    //if(hasCollision) break;
-                    node = cube->getRubicElt(i, j, k)->anode;
-                    hasCollision = colisionManager->getCollisionPoint(collRay, node->getTriangleSelector(), collPoint, collTriangle, pNode);
+        vector3df ppp; triangle3df ttt;
+        ISceneNode *test = 0;
+        test = colisionManager->getSceneNodeAndCollisionPointFromRay(collRay, ppp, ttt);
+    int face = 0;
 
-                    if(hasCollision && pNode->isTrulyVisible() && !sceneManager->isCulled(pNode)){
+
+        for(int i = 0; i < 3; i++){
+            if(hasCollision) break;
+            for(int j = 0; j < 3; j++){
+                if(hasCollision) break;
+                for(int k = 0; k < 3; k++){
+                    if(hasCollision) break;
+                    node = cube->getRubicElt(i, j, k)->anode;
+                    //hasCollision = colisionManager->getCollisionPoint(collRay, node->getTriangleSelector(), collPoint, collTriangle, pNode);
+
+                    if(test){
+                        if(node->getID() == test->getID()){
+                            hasCollision = true;
+                            //fprintf(stdout, "colision->ID: %d\n", test->getID());
+                            //cube->getRubicElt(i, j, k)->anode->setMaterialFlag(video::EMF_WIREFRAME, receiver.GetMouseState().RightButtonDown);
+                            node->setMaterialFlag(video::EMF_WIREFRAME, receiver.GetMouseState().RightButtonDown);
+                            //fprintf(stdout, "x, y, z (%f, %f, %f)\n", ppp.X, ppp.Y, ppp.Z);
+                            face = cube->getRubicElt(i, j, k)->faceIsOnPoint(ppp);
+                            fprintf(stdout, "Face: %d\n", face);
+                        }
+                    }
+
+
+                    /*if(hasCollision && pNode->isTrulyVisible() && !sceneManager->isCulled(pNode)){
                         //fprintf(stdout, "ID : %ld\n", pNode->getID());
                         fprintf(stdout, "collPoint.X : %f, collPoint.Y : %f, collPoint.Z : %f\n,", collPoint.X, collPoint.Y, collPoint.Z);
                         //hasCollision = false;
@@ -187,11 +206,11 @@ int main(void){
                         //cube->getRubicElt(i, j, k)->anode->setMaterialFlag(video::EMF_LIGHTING, receiver.GetMouseState().RightButtonDown);
 
                         //cube->rotate(cube->getRubicElt(1, 1, 1), vector3df(0, 0, 0));
-                    }
+                    }*/
                 }
             }
         }
-        //hasCollision = false;
+        hasCollision = false;
 
         //collRay = colisionManager->getRayFromScreenCoordinates(posCursor, sceneManager->getActiveCamera());
         //oui = colisionManager->getCollisionPoint(collRay, node->getTriangleSelector(), collPoint, collTriangle, pNode);
