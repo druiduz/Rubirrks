@@ -11,3 +11,12 @@
 *.lai
 *.la
 *.a
+
+.svn/
+*.cbp
+*.depend*
+*.layout*
+bin/
+*.txt
+*.cppt
+*.ht
